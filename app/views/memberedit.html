@@ -2,6 +2,14 @@
 #{set title:'Member Edit' /}
 
 #{menu id:"memberedit"/}
+
+<script>
+    function editDetails() {
+        alert("Details Saved!");
+    }
+</script>
+
+
 <div class="ui grid basic segment">
     <div class="four wide column">
     </div>
@@ -19,7 +27,7 @@
                 </div>
             </div>
             <div class="field">
-                <label>Address</label>
+                <label>Last Name</label>
                 <input value=${member.address} type="text" name="address" required>
             </div>
             <div class="two fields">
@@ -59,7 +67,7 @@
                 <label>Password</label>
                 <input value=${member.password} type="password" name="password" required>
             </div>
-            <button class="ui blue submit button">Save</button>
+            <button onclick="editDetails()" class="ui blue submit button">Save</button>
         </form>
     </div>
 </div>

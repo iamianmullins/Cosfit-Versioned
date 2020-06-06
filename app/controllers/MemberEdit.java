@@ -25,12 +25,13 @@ public class MemberEdit extends Controller {
         render("memberedit.html", member, measurement);
     }
 
-    public static void editDetails(String firstname, String lastname,
+    public static void editDetails(String firstname, String lastname,String address,
                                    int phone, String password) {
         Member member = Accounts.getLoggedInMember();
         Logger.info("Updating details for user " + member.email);
         member.setFirstname(firstname);
         member.setLastname(lastname);
+        member.setAddress(address);
         member.setPhone(phone);
         member.setPassword(password);
         member.save();

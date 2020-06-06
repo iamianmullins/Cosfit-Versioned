@@ -15,9 +15,9 @@ public class TrainerDash extends Controller {
         Trainer trainer = Accounts.getLoggedInTrainer();
         List<Member> memberList = Member.findAll();
         Collections.reverse(memberList);
-        int numberOfMembers = numberOfMembers();
-        int numberOfTrainers = numberOfTrainers();
-        double averageBmi = averageBmi();
+        int numberOfMembers = GymUtility.numberOfMembers();
+        int numberOfTrainers = GymUtility.numberOfTrainers();
+        double averageBmi = GymUtility.averageBmi();
         render("trainerdashboard.html", trainer, memberList, numberOfMembers,
                 numberOfTrainers, averageBmi);
     }
@@ -35,9 +35,9 @@ public class TrainerDash extends Controller {
     public static void viewMember(Long id) {
         Logger.info("Rendering View Member");
         Member member = Member.findById(id);
-        String BMICategory = determineBMICategory(id);
-        String idealBW = isIdealBodyWeight(id);
-        double getBMI = getBMI(id);
+        String BMICategory = GymUtility.determineBMICategory(id);
+        String idealBW = GymUtility.isIdealBodyWeight();
+        double getBMI = GymUtility.getBMI();
         List<Measurement> measurementlist = member.measurementlist;
         Collections.reverse(measurementlist);
         render("viewmember.html", member, measurementlist, BMICategory, idealBW, getBMI);
@@ -55,75 +55,5 @@ public class TrainerDash extends Controller {
         Logger.info("Editing " + measurement.dte + "Comment: " + comment);
         viewMember(id);
     }
-
-
-
-    public static int numberOfMembers() {
-        List<Member> memberList = Member.findAll();
-        int numberOfMembers = memberList.size();
-        return numberOfMembers;
-    }
-
-    public static int numberOfTrainers() {
-        List<Trainer> trainerList = Trainer.findAll();
-        int numberOfTrainers = trainerList.size();
-        return numberOfTrainers;
-    }
-
-    public static double averageBmi() {
-        List<Member> memberList = Member.findAll();
-        double average = GymUtility.averageBmi(memberList);
-        return average;
-    }
-
-
-    public static String determineBMICategory(Long id) {
-        Member member = Member.findById(id);
-        Measurement measurement;
-        if (member.measurementlist.size() > 0) {
-            measurement = member.measurementlist.get(0);
-        } else {
-            measurement = null;
-        }
-        double BMI = GymUtility.calculateBMI(member, measurement);
-        String BMICategory = GymUtility.determineBMICategory(BMI);
-        Logger.info("Getting BMI Category");
-        return BMICategory;
-    }
-
-    public static String isIdealBodyWeight(Long id) {
-        Member member = Member.findById(id);
-        Measurement measurement;
-        if (member.measurementlist.size() > 0) {
-            measurement = member.measurementlist.get(0);
-        } else {
-            measurement = null;
-        }
-        String isIdeal;
-        Boolean ideal = GymUtility.isIdealBodyWeight(member, measurement);
-        if (ideal) {
-            isIdeal = "Ideal";
-        } else {
-            isIdeal = "Not Ideal";
-        }
-        Logger.info("Getting BMI Category");
-        return isIdeal;
-    }
-
-    public static double getBMI(Long id) {
-        Member member = Member.findById(id);
-        Measurement measurement;
-        if (member.measurementlist.size() > 0) {
-            measurement = member.measurementlist.get(0);
-        } else {
-            measurement = null;
-        }
-        double BMI = GymUtility.calculateBMI(member, measurement);
-        Logger.info("Getting BMI");
-        return BMI;
-    }
-
-
-
 
 }

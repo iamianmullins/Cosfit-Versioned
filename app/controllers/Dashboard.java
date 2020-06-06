@@ -14,9 +14,9 @@ public class Dashboard extends Controller {
     Member member = Accounts.getLoggedInMember();
     List<Measurement> measurementlist = member.measurementlist;
     Collections.reverse(measurementlist);
-    double getBMI = getBMI();
-    String BMICategory = determineBMICategory();
-    String idealBW = isIdealBodyWeight();
+    double getBMI = GymUtility.getBMI();
+    String BMICategory = GymUtility.determineBMICategory();
+    String idealBW = GymUtility.isIdealBodyWeight();
     render("dashboard.html", member, measurementlist, getBMI, BMICategory, idealBW);
   }
 
@@ -30,6 +30,9 @@ public class Dashboard extends Controller {
       previousMeasusurement = member.measurementlist.get(index-1);
       previousWeight = previousMeasusurement.weightRecord;
       member.setMostRecentWeight(previousWeight);
+    }
+    else{
+      previousWeight = member.getStartingWeight();
     }
     Measurement measurement = new Measurement(previousWeight, weightRecord, chestMeasurement, abdominalMeasurement, thighMeasurement,
             waistMeasurement,upperArmMeasurement ,comment);
@@ -50,48 +53,5 @@ public class Dashboard extends Controller {
     redirect("/dashboard");
   }
 
-  public static double getBMI() {
-    Member member = Accounts.getLoggedInMember();
-    Measurement measurement;
-    if (member.measurementlist.size() > 0) {
-      measurement = member.measurementlist.get(0);
-    } else {
-      measurement = null;
-    }
-    double BMI = GymUtility.calculateBMI(member, measurement);
-    Logger.info("Getting BMI");
-    return BMI;
-  }
 
-  public static String determineBMICategory() {
-    Member member = Accounts.getLoggedInMember();
-    Measurement measurement;
-    if (member.measurementlist.size() > 0) {
-      measurement = member.measurementlist.get(0);
-    } else {
-      measurement = null;
-    }
-    double BMI = GymUtility.calculateBMI(member, measurement);
-    String BMICategory = GymUtility.determineBMICategory(BMI);
-    Logger.info("Getting BMI Category");
-    return BMICategory;
-  }
-
-  public static String isIdealBodyWeight() {
-    Member member = Accounts.getLoggedInMember();
-    Measurement measurement;
-    if (member.measurementlist.size() > 0) {
-      measurement = member.measurementlist.get(0);
-    } else {
-      measurement = null;
-    }
-    String isIdeal ="";
-    if (GymUtility.isIdealBodyWeight(member, measurement)) {
-      isIdeal = "Ideal";
-    } else if (!GymUtility.isIdealBodyWeight(member, measurement)) {
-      isIdeal = "Not Ideal";
-    }
-    Logger.info("Getting BMI Category");
-    return isIdeal;
-  }
 }

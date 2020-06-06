@@ -28,6 +28,8 @@ public class Member extends Model
     @OneToMany(cascade = CascadeType.ALL)
     public List<Measurement> measurementlist = new ArrayList<Measurement>();
 
+
+
     public Member(String firstname, String lastname, String address, Date dateOfBirth, String gender,
                   double height, double startingWeight, double mostRecentWeight, int phone, String email, String password)
     {
@@ -103,6 +105,10 @@ public class Member extends Model
         this.password = password;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -114,4 +120,9 @@ public class Member extends Model
     public void setMostRecentWeight(double mostRecentWeight) {
         this.mostRecentWeight = mostRecentWeight;
     }
+
+    public double getStartingWeight() {
+        return startingWeight;
+    }
+
 }

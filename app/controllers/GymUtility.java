@@ -2,6 +2,8 @@ package controllers;
 
 import models.Measurement;
 import models.Member;
+import models.Trainer;
+import play.Logger;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -156,6 +158,75 @@ public class GymUtility {
         }
         double average  = total/members.size();
         return toTwoDecimalPlaces(average);
+    }
+
+
+    public static double getBMI() {
+        Member member = Accounts.getLoggedInMember();
+        Measurement measurement;
+        if (member.measurementlist.size() > 0) {
+            measurement = member.measurementlist.get(0);
+        } else {
+            measurement = null;
+        }
+        double BMI = GymUtility.calculateBMI(member, measurement);
+        Logger.info("Getting BMI");
+        return BMI;
+    }
+
+    public static String determineBMICategory() {
+        Member member = Accounts.getLoggedInMember();
+        Measurement measurement;
+        if (member.measurementlist.size() > 0) {
+            measurement = member.measurementlist.get(0);
+        } else {
+            measurement = null;
+        }
+        double BMI = GymUtility.calculateBMI(member, measurement);
+        String BMICategory = GymUtility.determineBMICategory(BMI);
+        Logger.info("Getting BMI Category");
+        return BMICategory;
+    }
+
+    public static String isIdealBodyWeight() {
+        Member member = Accounts.getLoggedInMember();
+        Measurement measurement;
+        if (member.measurementlist.size() > 0) {
+            measurement = member.measurementlist.get(0);
+        } else {
+            measurement = null;
+        }
+        String isIdeal ="";
+        if (isIdealBodyWeight(member, measurement)) {
+            isIdeal = "Ideal";
+        } else if (!GymUtility.isIdealBodyWeight(member, measurement)) {
+            isIdeal = "Not Ideal";
+        }
+        Logger.info("Getting Ideal Body Weight boolean");
+        return isIdeal;
+    }
+
+
+
+
+
+
+    public static int numberOfMembers() {
+        List<Member> memberList = Member.findAll();
+        int numberOfMembers = memberList.size();
+        return numberOfMembers;
+    }
+
+    public static int numberOfTrainers() {
+        List<Trainer> trainerList = Trainer.findAll();
+        int numberOfTrainers = trainerList.size();
+        return numberOfTrainers;
+    }
+
+    public static double averageBmi() {
+        List<Member> memberList = Member.findAll();
+        double average = GymUtility.averageBmi(memberList);
+        return average;
     }
 
 }
