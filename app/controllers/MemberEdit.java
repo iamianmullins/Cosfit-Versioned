@@ -28,7 +28,7 @@ public class MemberEdit extends Controller {
     public static void editDetails(String firstname, String lastname,
                                    int phone, String password) {
         Member member = Accounts.getLoggedInMember();
-        Logger.info("Updating deails for user " + member.email);
+        Logger.info("Updating details for user " + member.email);
         member.setFirstname(firstname);
         member.setLastname(lastname);
         member.setPhone(phone);

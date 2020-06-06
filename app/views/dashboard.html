@@ -64,7 +64,7 @@
     <table class="ui center aligned selectable inverted fluid table">
       <thead>
       <tr>
-        <th></th>
+
         <th> Date - Time</th>
         <th>Height</th>
         <th>Weight Measurement</th>
@@ -75,12 +75,15 @@
         <th>Waist Measurement</th>
         <th>Comment</th>
         <th>Delete</th>
+        <th>Trend</th>
       </tr>
       </thead>
       <tbody>
+
+
       #{list items:measurementlist, as:'measurement'}
       <tr>
-        <td><span class="ui blue ribbon label"><i class="ui inverted exclamation icon"></i></span></td>
+
         <td> ${measurement.dte} </td>
         <td> ${member.height} </td>
         <td> ${measurement.weightRecord} </td>
@@ -99,6 +102,15 @@
           </a>
         </button>
         </td>
+        #{if measurement.previousWeight >  measurement.weightRecord}
+          <td><span class="ui green right ribbon label"><i class="ui large inverted arrow alternate circle down icon"></i></span></td>
+        #{/if}
+        #{elseif  measurement.previousWeight <  measurement.weightRecord}
+          <td><span class="ui orange right ribbon label"><i class="ui large inverted arrow alternate circle up icon"></i></span></td>
+        #{/elseif}
+        #{else}
+          <td><span class="ui blue right ribbon label"><i class="ui large inverted circle icon"></i></span></td>
+        #{/else}
       </tr>
 
       #{/list}

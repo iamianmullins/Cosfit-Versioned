@@ -19,10 +19,10 @@ public class Accounts extends Controller
     }
 
     public static void register(String firstname, String lastname, String address, Date dateOfBirth, String gender,
-                                double height, double startingWeight, int phone, String email, String password)
+                                double height, double mostRecentWeight, double startingWeight, int phone, String email, String password)
     {
         Logger.info("Registering new user " + email);
-        Member member = new Member(firstname, lastname, address, dateOfBirth, gender, height, startingWeight, phone, email, password);
+        Member member = new Member(firstname, lastname, address, dateOfBirth, gender, height, mostRecentWeight, startingWeight, phone, email, password);
         member.save();
         redirect("/");
     }

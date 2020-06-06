@@ -18,6 +18,7 @@ public class Member extends Model
     public String gender;
     public double height;
     public double startingWeight;
+    public double mostRecentWeight;
     public int phone;
     public String email;
     public String password;
@@ -28,7 +29,7 @@ public class Member extends Model
     public List<Measurement> measurementlist = new ArrayList<Measurement>();
 
     public Member(String firstname, String lastname, String address, Date dateOfBirth, String gender,
-                  double height, double startingWeight, int phone, String email, String password)
+                  double height, double startingWeight, double mostRecentWeight, int phone, String email, String password)
     {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -53,6 +54,7 @@ public class Member extends Model
         }
         return BMI;
     }
+
 
     public static Member findByEmail(String email)
     {
@@ -105,6 +107,11 @@ public class Member extends Model
         return dateOfBirth;
     }
 
+    public double getMostRecentWeight() {
+        return mostRecentWeight;
+    }
 
-
+    public void setMostRecentWeight(double mostRecentWeight) {
+        this.mostRecentWeight = mostRecentWeight;
+    }
 }

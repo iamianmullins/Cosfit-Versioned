@@ -1,6 +1,7 @@
 Measurement(a1):
   dte: Sat May 30 - 15:32:03
-  weightRecord: 100
+  previousWeight: 98
+  weightRecord: 93.2
   height: 1.8
   chestMeasurement: 10.5
   abdominalMeasurement: 10.5
@@ -11,6 +12,7 @@ Measurement(a1):
 
 Measurement(a2):
   dte: Sun May 30 - 20:32:03
+  previousWeight: 98
   weightRecord: 100
   height: 1.8
   chestMeasurement: 10.5
@@ -22,6 +24,7 @@ Measurement(a2):
 
 Measurement(a3):
   dte: Mon May 30 - 12:32:03
+  previousWeight: 98
   weightRecord: 100
   height: 1.8
   chestMeasurement: 10.5
@@ -33,6 +36,7 @@ Measurement(a3):
 
 Measurement(a4):
   dte: Sat May 30 - 15:32:03
+  previousWeight: 98
   weightRecord: 100
   height: 1.8
   chestMeasurement: 10.5
@@ -44,6 +48,7 @@ Measurement(a4):
 
 Measurement(a5):
   dte: Sun May 30 - 20:32:03
+  previousWeight: 98
   weightRecord: 100
   height: 1.8
   chestMeasurement: 10.5
@@ -55,6 +60,7 @@ Measurement(a5):
 
 Measurement(a6):
   dte: Mon May 30 - 12:32:03
+  previousWeight: 98
   weightRecord: 100
   height: 1.8
   chestMeasurement: 10.5
@@ -66,6 +72,7 @@ Measurement(a6):
 
 Measurement(a7):
   dte: Mon May 29 - 12:32:03
+  previousWeight: 98
   weightRecord: 100
   height: 1.8
   chestMeasurement: 10.5
@@ -82,12 +89,13 @@ Member(m1):
   dateOfBirth: 1975-09-17
   gender: Male
   height: 2.0
+  mostRecentWeight: 93.2
   startingWeight: 93.2
   phone: 051000000
   email: homer@simpson.com
   password: secret
   measurementlist:
-
+    - a1
 
 Member(m2):
   firstname: Lisa
@@ -96,6 +104,7 @@ Member(m2):
   dateOfBirth: 2010-06-05
   gender: Female
   height: 1.4
+  mostRecentWeight: 52
   startingWeight: 52
   phone: 051000000
   email: lisa@simpson.com
@@ -110,6 +119,7 @@ Member(m3):
   dateOfBirth: 1975-09-17
   gender: Male
   height: 1.65
+  mostRecentWeight: 101
   startingWeight: 101
   phone: 051000000
   email: barney@gumble.com
@@ -124,6 +134,7 @@ Member(m4):
   dateOfBirth: 1975-09-17
   gender: Male
   height: 1.8
+  mostRecentWeight: 85
   startingWeight: 85
   phone: 051000000
   email: carl@carlson@com
@@ -138,6 +149,7 @@ Member(m5):
   dateOfBirth: 1975-09-17
   gender: Unspecified
   height: 1.8
+  mostRecentWeight: 85
   startingWeight: 85
   phone: 051000000
   email: clancy@wiggum@com
@@ -152,6 +164,7 @@ Member(m6):
   dateOfBirth: 1975-09-17
   gender: Male
   height: 1.8
+  mostRecentWeight: 85
   startingWeight: 85
   phone: 051000000
   email: lenny@leonard@com

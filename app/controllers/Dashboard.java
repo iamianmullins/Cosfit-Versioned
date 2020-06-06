@@ -20,13 +20,22 @@ public class Dashboard extends Controller {
     render("dashboard.html", member, measurementlist, getBMI, BMICategory, idealBW);
   }
 
-  public static void addMeasurement(double weightRecord,double height, double chestMeasurement, double abdominalMeasurement, double thighMeasurement,
+  public static void addMeasurement(double weightRecord, double chestMeasurement, double abdominalMeasurement, double thighMeasurement,
                                     double waistMeasurement, double upperArmMeasurement, String comment) {
     Member member = Accounts.getLoggedInMember();
-    Measurement measurement = new Measurement(weightRecord, height, chestMeasurement, abdominalMeasurement, thighMeasurement,
+    Measurement previousMeasusurement;
+    double previousWeight = 0;
+    if (member.measurementlist.size() > 0) {
+      int index = member.measurementlist.size();
+      previousMeasusurement = member.measurementlist.get(index-1);
+      previousWeight = previousMeasusurement.weightRecord;
+      member.setMostRecentWeight(previousWeight);
+    }
+    Measurement measurement = new Measurement(previousWeight, weightRecord, chestMeasurement, abdominalMeasurement, thighMeasurement,
             waistMeasurement,upperArmMeasurement ,comment);
     member.measurementlist.add(measurement);
     measurement.save();
+    member.save();
     Logger.info("Adding Measurement");
     redirect("/dashboard");
   }

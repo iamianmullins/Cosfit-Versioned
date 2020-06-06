@@ -26,6 +26,7 @@
                 <th>Thigh Measurement</th>
                 <th>UpperArm Measurement</th>
                 <th>Waist Measurement</th>
+                <th>Trend</th>
             </tr>
             </thead>
             <tbody>
@@ -38,8 +39,18 @@
                 <td> ${measurement.thighMeasurement} </td>
                 <td> ${measurement.upperArmMeasurement} </td>
                 <td> ${measurement.waistMeasurement} </td>
+                #{if measurement.previousWeight >  measurement.weightRecord}
+                    <td><span class="ui green right ribbon label"><i class="ui large inverted arrow alternate circle down icon"></i></span></td>
+                #{/if}
+                #{elseif  measurement.previousWeight <  measurement.weightRecord}
+                    <td><span class="ui orange right ribbon label"><i class="ui large inverted arrow alternate circle up icon"></i></span></td>
+                #{/elseif}
+                #{else}
+                    <td><span class="ui blue right ribbon label"><i class="ui large inverted circle icon"></i></span></td>
+                #{/else}
             <tr>
             <td>Assessment Comment</td>
+
                 <td colspan="2">${measurement.comment}</td>
                 <td colspan="6"></td>
             </tr>
