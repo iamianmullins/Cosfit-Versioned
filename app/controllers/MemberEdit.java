@@ -1,16 +1,22 @@
 package controllers;
 import controllers.Accounts;
+import models.Measurement;
 import models.Member;
 import play.Logger;
 import play.mvc.Controller;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 public class MemberEdit extends Controller {
     public static void index() {
         Logger.info("Rendering MemberEdit");
         Member member = Accounts.getLoggedInMember();
-        render("memberedit.html", member);
+        List<Measurement> measurementlist = member.measurementlist;
+        Collections.reverse(measurementlist);
+        Measurement measurement = measurementlist.get(0);
+        render("memberedit.html", member, measurement);
     }
 
     public static void editDetails(String firstname, String lastname,

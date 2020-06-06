@@ -2,17 +2,6 @@
 #{set title:'Member Edit' /}
 
 #{menu id:"memberedit"/}
-
-<script>
-    $('body')
-            .toast({
-                class: 'success',
-                message: `You're using the good framework !`
-            })
-    ;
-</script>
-
-
 <div class="ui grid basic segment">
     <div class="four wide column">
     </div>
@@ -37,6 +26,16 @@
                 <div class="field">
                     <label>Gender</label>
                     <input value=${member.gender} type="text" name="gender" disabled>
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label>Height</label>
+                    <input value=${member.height}m type="text" name="height" disabled>
+                </div>
+                <div class="field">
+                    <label>Latest Weight</label>
+                    <input value=${measurement.weightRecord}kg type="text" name="height" disabled>
                 </div>
             </div>
             <div class="field">

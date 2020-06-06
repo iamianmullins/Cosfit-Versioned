@@ -104,46 +104,46 @@ public class GymUtility {
      * @param measurement is the assessment for which the boolean ideal body weight is returned
      * @return boolean is ideal body weight within a tolerance of +/-.2 kg
      */
+
     public static boolean isIdealBodyWeight(Member member, Measurement measurement) {
         try {
-            double latestWeight;
-            latestWeight = measurement.getWeightRecord();
-            if(measurement==null){
-                latestWeight = member.startingWeight;
-            }
             double baseWeightMale = 50;
             double baseWeightFemale = 45.5;
+            double baseHeight = 60; //5 feet in inches
+            double mtrsToInch = 39.37;
 
-            double minHeight = 60; //5 feet to cm calculation
-            double height;
-            if ((member.getHeight()) < 1.524) {//conversion to cm,
-                height = 60;
+            double memberWeight;
+            try {
+                memberWeight  = measurement.getWeightRecord();
+            }
+            catch (Exception e) {
+                memberWeight = member.startingWeight;
+            }
+            
+            double memberHeight;
+            if ((member.getHeight())*mtrsToInch < baseHeight) {//conversion to cm,
+                memberHeight = baseHeight;
             } else {
-                height = member.getHeight() *  39.37; //Height in cm
+                memberHeight = member.getHeight() * mtrsToInch; //Height in cm
             }
+            double weightDifference;
             String gender = member.getGender();
-            if (gender.equalsIgnoreCase("m")) {
-                double weightDifference = (latestWeight - baseWeightMale); //2.3kg allowance for each inch over 5 foot
-                double heightDifference = (height - minHeight)* 2.3;; //cm conversion to inches
-                if ((weightDifference - heightDifference >= -0.2) && (weightDifference - heightDifference <= 0.2)) {
-                    return true;
-                }
-                if ((weightDifference - heightDifference < -0.2) || (weightDifference - heightDifference > 0.2)) {
-                    return false;
-                }
+            if (gender.equals("Male")) {
+                weightDifference = memberWeight - baseWeightMale;
             }
-            //Female and unspecified calculation
-            else if ((gender.equalsIgnoreCase("f")) || (gender.equalsIgnoreCase("unspecified"))) {
-                double weightDifference = (latestWeight - baseWeightFemale) / 2.3; //2.3kg allowance for each inch over 5 foot
-                double heightDifference = (height - minHeight) / 2.54; //cm conversion to inches
-                if ((weightDifference - heightDifference >= -0.2) && (weightDifference - heightDifference <= 0.2)) {
-                    return true;
-                }
-                if ((weightDifference - heightDifference <= -0.2) || (weightDifference - heightDifference >= 0.2)) {
-                    return false;
-                }
+            else{
+                weightDifference = memberWeight - baseWeightFemale;
             }
-            return false;
+            double heightDifference = memberHeight - baseHeight;
+            double allowance  = heightDifference * 2.3; //2.3kg allowance per inch over 5 foot
+            double weightAllowanceDifference = weightDifference-allowance;
+
+            if ((weightAllowanceDifference >= -0.2) && (weightAllowanceDifference <= 0.2)) {
+                return true;
+            }
+            else {
+                return false;
+            }
         } catch (Exception e) {
             return false;
         }

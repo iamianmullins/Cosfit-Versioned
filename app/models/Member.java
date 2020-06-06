@@ -41,8 +41,14 @@ public class Member extends Model
     }
 
     public double getBMI(){
-        Measurement measurement = measurementlist.get(measurementlist.size()-1);
-        double BMI = startingWeight/(height*height);
+        double BMI;
+        if(measurementlist.size()>0) {
+            Measurement measurement = measurementlist.get(measurementlist.size() - 1);
+            BMI = measurement.weightRecord/(height*height);
+        }
+        else{
+            BMI = startingWeight/(height*height);
+        }
         return BMI;
     }
 

@@ -80,13 +80,13 @@ Member(m1):
   lastname: Simpson
   dateOfBirth: 1975-09-17
   gender: Male
-  height: 1.8
-  startingWeight: 250
+  height: 2.0
+  startingWeight: 93.2
   phone: 051000000
   email: homer@simpson.com
   password: secret
   measurementlist:
-  - a1
+
 
 Member(m2):
   firstname: Lisa

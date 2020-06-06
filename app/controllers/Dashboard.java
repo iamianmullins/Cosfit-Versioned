@@ -76,11 +76,10 @@ public class Dashboard extends Controller {
     } else {
       measurement = null;
     }
-    String isIdeal;
-    Boolean ideal = GymUtility.isIdealBodyWeight(member, measurement);
-    if (ideal) {
+    String isIdeal ="";
+    if (GymUtility.isIdealBodyWeight(member, measurement)) {
       isIdeal = "Ideal";
-    } else {
+    } else if (!GymUtility.isIdealBodyWeight(member, measurement)) {
       isIdeal = "Not Ideal";
     }
     Logger.info("Getting BMI Category");
