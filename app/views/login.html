@@ -1,0 +1,28 @@
+#{extends 'main.html' /}
+#{set title:'Login' /}
+#{welcomemenu id:"login"/}
+
+<div class="ui grid basic segment">
+    <div class="four wide column">
+    </div>
+    <div class="eight wide column">
+        <form class="ui stacked segment inverted form" action="/authenticate" method="POST">
+            <div class="ui two item inverted menu">
+                <a id="signup" class="active gray item" href="/signup"> Register  </a>
+                <a id="login" class="active blue item" href="/login">  Login   </a>
+            </div>
+                <h3 class="ui header">Log-in</h3>
+                <div class="field">
+                    <label>Email</label> <input placeholder="Email" name="email">
+                </div>
+                <div class="field">
+                    <label>Password</label> <input type="password" name="password">
+                </div>
+
+            <button class="ui blue submit button">Submit</button>
+        </form>
+
+</div>
+
+
+

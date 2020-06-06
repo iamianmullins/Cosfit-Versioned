@@ -1,0 +1,128 @@
+#{extends 'main.html' /}
+#{set title:'Trainer Dashboard' /}
+
+#{trainermenu id:"trainerdashboard"/}
+
+
+<div class="ui grid center aligned">
+    <div class="row">
+    </div>
+    <div class="four wide column">
+        <div class="small content ui  statistic">
+            <div class="value">
+                <i class="blue user icon"></i>
+                <hr></hr>
+                <div class="value">${member.firstname} ${member.lastname}</div>
+            </div>
+        </div>
+    </div>
+    <div class="four wide column">
+        <div class="small content ui statistic">
+            <div class="value">
+                <i class="orange weight icon"></i>
+
+                <hr></hr>
+                <div class="value"> ${BMICategory}</div>
+            </div>
+        </div>
+    </div>
+    <div class="four wide column">
+        <div class="small content ui statistic">
+            <div class="value">
+                <i class="red heartbeat icon"></i>
+
+                <hr></hr>
+                <div class="value">BMI ${getBMI}</div>
+            </div>
+        </div>
+    </div>
+    <div class="four wide column">
+        <div class="small content ui statistic">
+            <div class="value">
+                <i class="user md icon"></i>
+                <hr></hr>
+                <div class="value">BMI class ${idealBW}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    </div>
+</div>
+
+</div> <!--end of row-->
+
+<br>
+
+
+
+
+
+
+
+<div class="row">
+    <div class = "sixteen wide column">
+    #{list items:measurementlist, as:'measurement'}
+        <table class="ui table">
+            <table class="ui center aligned selectable inverted fluid table">
+            <thead>
+            <tr>
+                <th> Date - Time</th>
+                <th>Height</th>
+                <th>Weight Measurement</th>
+                <th>Chest Measurement</th>
+                <th>Abdominal Measurement</th>
+                <th>Thigh Measurement</th>
+                <th>UpperArm Measurement</th>
+                <th>Waist Measurement</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td> ${measurement.dte} </td>
+                <td> ${member.height} </td>
+                <td> ${measurement.weightRecord} </td>
+                <td> ${measurement.chestMeasurement} </td>
+                <td> ${measurement.abdominalMeasurement} </td>
+                <td> ${measurement.thighMeasurement} </td>
+                <td> ${measurement.upperArmMeasurement} </td>
+                <td> ${measurement.waistMeasurement} </td>
+            <tr>
+            <td>Assessment Comment</td>
+                <td colspan="2">${measurement.comment}</td>
+                <td colspan="6"></td>
+            </tr>
+            <tr>
+                <td>Update Comment</td>
+                <td colspan="2">
+                    <form class="ui fluid form" action="/viewmember/${member.id}/editcomment/${measurement.id}" method="POST">
+                    <div class="field">
+                        <input placeholder="comment" type="text" name="comment" required>
+                    </div>
+
+                </td>
+                <td>
+                    <button class="ui vertical animated fluid blue submit button" tabindex="0">
+                    <div class="hidden content"><span class="ui inverted text">Edit Comment</span></div>
+                    <div class="visible content">
+                        <i class="ui check circle icon"></i>
+                    </div>
+                    </button>
+                    </form>
+                </td>
+                <td colspan="4"></td>
+            </tr>
+            </tr>
+            #{/list}
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+</div>
+
+
+
+</section>
+

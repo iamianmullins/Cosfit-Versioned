@@ -1,0 +1,215 @@
+#{extends 'main.html' /}
+#{set title:'Dashboard' /}
+
+#{menu id:"dashboard"/}
+
+
+<div class="ui grid center aligned">
+  <div class="row">
+  </div>
+  <div class="four wide column">
+    <div class="small content ui  statistic">
+    <div class="value">
+    #{if (getBMI >= 18.5 && getBMI< 25)}
+      <i class="green user icon"></i>
+    #{/if}
+    #{elseif (member.gender=="Male")}
+      <i class="blue user icon"></i>
+    #{/elseif}
+    #{elseif member.gender=="Female"}
+      <i class="pink user icon"></i>
+    #{/elseif}
+    #{else}
+      <i class="orange user icon"></i>
+    #{/else}
+            <hr></hr>
+      <div class="value">${member.firstname} ${member.lastname}</div>
+    </div>
+  </div>
+  </div>
+  <div class="four wide column">
+    <div class="small content ui statistic">
+      <div class="value">
+      #{if (getBMI)<16}
+        <i class="red weight icon"></i>
+      #{/if}
+      #{elseif (getBMI >= 16 && getBMI< 18.5)}
+        <i class="orange weight icon"></i>
+      #{/elseif}
+      #{elseif (getBMI >= 18.5 && getBMI< 25)}
+        <i class="green weight icon"></i>
+      #{/elseif}
+      #{elseif (getBMI >= 25 && getBMI< 30)}
+        <i class="orange weight icon"></i>
+      #{/elseif}
+      #{elseif (getBMI >= 30 && getBMI< 35)}
+        <i class="red weight icon"></i>
+      #{/elseif}
+      #{elseif (getBMI> 35)}
+        <i class="weight icon"></i>
+      #{/elseif}
+
+        <hr></hr>
+        <div class="value"> ${BMICategory}</div>
+      </div>
+    </div>
+  </div>
+  <div class="four wide column">
+    <div class="small content ui statistic">
+      <div class="value">
+      #{if (getBMI)<16}
+        <i class="red heartbeat icon"></i>
+      #{/if}
+      #{elseif (getBMI >= 16 && getBMI< 18.5)}
+        <i class="orange heartbeat icon"></i>
+      #{/elseif}
+      #{elseif (getBMI >= 18.5 && getBMI< 25)}
+        <i class="green heartbeat icon"></i>
+      #{/elseif}
+      #{elseif (getBMI >= 25 && getBMI< 30)}
+        <i class="orange heartbeat icon"></i>
+      #{/elseif}
+      #{elseif (getBMI >= 30 && getBMI< 35)}
+        <i class="red heartbeat icon"></i>
+      #{/elseif}
+      #{elseif (getBMI> 35)}
+        <i class="heartbeat icon"></i>
+      #{/elseif}
+        <hr></hr>
+        <div class="value">BMI ${getBMI}</div>
+
+      </div>
+    </div>
+  </div>
+  <div class="four wide column">
+    <div class="small content ui statistic">
+      <div class="value">
+      #{if (idealBW.equals("Ideal"))}
+        <i class="user green md icon"></i>
+      #{/if}
+      #{elseif (idealBW.equals("Not Ideal"))}
+        <i class="user red md icon"></i>
+      #{/elseif}
+
+        <hr></hr>
+        <div class="value">BMI ${idealBW}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  </div>
+</div>
+
+
+
+
+<br>
+<hr>
+<br>
+
+  <div class = "sixteen wide column">
+    <form class="ui fluid inverted segment form" action="/dashboard/addmeasurement" method="POST">
+      <div class="three fields">
+        <div class="field">
+          <label>Weight*</label>
+          <input placeholder="Weight (kg)" type="number" max="250"  step=0.01 name="weightRecord" required>
+        </div>
+        <div class="field">
+          <label>Chest Measurement*</label>
+          <input placeholder="Chest Measurement (cm)" type="number" max="100"  step=0.01 name="chestMeasurement" required>
+        </div>
+        <div class="field">
+        <label>Abdominal Measurement*</label>
+        <input placeholder="Abdominal Measurement (cm)" type="number" max="100"  step=0.01" name="abdominalMeasurement" required>
+      </div>
+      </div>
+      <div class="three fields">
+        <div class="field">
+          <label>Thigh Measurement*</label>
+          <input placeholder="Thigh Measurement (cm)" type="number" max="250"  step=0.01 name="thighMeasurement" required>
+        </div>
+        <div class="field">
+          <label>Upper Arm Measurement*</label>
+          <input placeholder="Upper Arm Measurement (cm)" type="number" max="100"  step=0.01 name="upperArmMeasurement" required>
+        </div>
+        <div class="field">
+          <label>Waist*</label>
+          <input placeholder="Waist Measurement (cm)" type="number" max="100"  step=0.01" name="waistMeasurement" required>
+        </div>
+      </div>
+
+
+      <button class="ui vertical animated fluid green button" tabindex="0">
+        <div class="hidden content"><span class="ui inverted text">Add Record</span></div>
+        <div class="visible content">
+          <i class="ui check circle icon"></i>
+        </div>
+      </button>
+    </form>
+  </div>
+</div> <!--end of row-->
+
+<br>
+<hr>
+<br>
+
+
+
+
+
+
+  <div class="row">
+  <div class = "sixteen wide column">
+    <table class="ui center aligned selectable inverted fluid table">
+      <thead>
+      <tr>
+        <th> Date - Time</th>
+        <th>Height</th>
+        <th>Weight Measurement</th>
+        <th>Chest Measurement</th>
+        <th>Abdominal Measurement</th>
+        <th>Thigh Measurement</th>
+        <th>UpperArm Measurement</th>
+        <th>Waist Measurement</th>
+        <th>Comment</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      #{list items:measurementlist, as:'measurement'}
+      <tr>
+        <td> ${measurement.dte} </td>
+        <td> ${member.height} </td>
+        <td> ${measurement.weightRecord} </td>
+        <td> ${measurement.chestMeasurement} </td>
+        <td> ${measurement.abdominalMeasurement} </td>
+        <td> ${measurement.thighMeasurement} </td>
+        <td> ${measurement.upperArmMeasurement} </td>
+        <td> ${measurement.waistMeasurement} </td>
+        <td> ${measurement.comment} </td>
+        <td><button class="ui vertical animated fluid negative button" tabindex="0">
+          <a class="ui primary" href="/dashboard/${member.id}/deletemeasurement/${measurement.id} ">
+            <div class="hidden content"><span class="ui black text">Delete</span></div>
+            <div class="visible content">
+              <i class="ui inverted trash icon"></i>
+            </div>
+          </a>
+        </button>
+        </td>
+      </tr>
+
+      #{/list}
+      <tr><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+  </div>
+
+
+
+</section>
+

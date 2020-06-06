@@ -1,0 +1,57 @@
+#{extends 'main.html' /}
+#{set title:'Member Edit' /}
+
+#{menu id:"memberedit"/}
+
+<script>
+    $('body')
+            .toast({
+                class: 'success',
+                message: `You're using the good framework !`
+            })
+    ;
+</script>
+
+
+<div class="ui grid basic segment">
+    <div class="four wide column">
+    </div>
+    <div class="eight wide column">
+        <form class="ui stacked inverted segment form" action="/memberedit/editdetails" method="POST">
+            <h3 class="ui header">Edit Details</h3>
+            <div class="two fields">
+                <div class="field">
+                    <label>First Name</label>
+                    <input value=${member.firstname} type="text" name="firstname" required>
+                </div>
+                <div class="field">
+                    <label>Last Name</label>
+                    <input value=${member.lastname} type="text" name="lastname" required>
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label>DOB</label>
+                    <input value=${member.dateOfBirth} type="date" name="dateOfBirth" disabled>
+                </div>
+                <div class="field">
+                    <label>Gender</label>
+                    <input value=${member.gender} type="text" name="gender" disabled>
+                </div>
+            </div>
+            <div class="field">
+                <label>Phone</label>
+                <input value=${member.phone} type="tel" name="phone">
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input value=${member.email} type="email" name="email" disabled>
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input value=${member.password} type="password" name="password" required>
+            </div>
+            <button onclick=toast class="ui blue submit button">Save</button>
+        </form>
+    </div>
+</div>

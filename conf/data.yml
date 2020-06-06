@@ -1,0 +1,170 @@
+Measurement(a1):
+  dte: Sat May 30 - 15:32:03
+  weightRecord: 100
+  height: 1.8
+  chestMeasurement: 10.5
+  abdominalMeasurement: 10.5
+  thighMeasurement: 10.5
+  upperArmMeasurement: 10.5
+  waistMeasurement: 12.5
+  comment: Lisa Simpson:Good job
+
+Measurement(a2):
+  dte: Sun May 30 - 20:32:03
+  weightRecord: 100
+  height: 1.8
+  chestMeasurement: 10.5
+  abdominalMeasurement: 10.5
+  thighMeasurement: 10.5
+  upperArmMeasurement: 10.5
+  waistMeasurement: 12.5
+  comment: Lisa Simpson:Cool Beans
+
+Measurement(a3):
+  dte: Mon May 30 - 12:32:03
+  weightRecord: 100
+  height: 1.8
+  chestMeasurement: 10.5
+  abdominalMeasurement: 10.5
+  thighMeasurement: 10.5
+  upperArmMeasurement: 10.5
+  waistMeasurement: 12.5
+  comment: Lisa Simpson:Nice One
+
+Measurement(a4):
+  dte: Sat May 30 - 15:32:03
+  weightRecord: 100
+  height: 1.8
+  chestMeasurement: 10.5
+  abdominalMeasurement: 10.5
+  thighMeasurement: 10.5
+  upperArmMeasurement: 10.5
+  waistMeasurement: 12.5
+  comment: Lisa Simpson:Well Done
+
+Measurement(a5):
+  dte: Sun May 30 - 20:32:03
+  weightRecord: 100
+  height: 1.8
+  chestMeasurement: 10.5
+  abdominalMeasurement: 10.5
+  thighMeasurement: 10.5
+  upperArmMeasurement: 10.5
+  waistMeasurement: 12.5
+  comment: Lisa Simpson:Great work
+
+Measurement(a6):
+  dte: Mon May 30 - 12:32:03
+  weightRecord: 100
+  height: 1.8
+  chestMeasurement: 10.5
+  abdominalMeasurement: 10.5
+  thighMeasurement: 10.5
+  upperArmMeasurement: 10.5
+  waistMeasurement: 12.5
+  comment: Lisa Simpson:Great Job
+
+Measurement(a7):
+  dte: Mon May 29 - 12:32:03
+  weightRecord: 100
+  height: 1.8
+  chestMeasurement: 10.5
+  abdominalMeasurement: 10.5
+  thighMeasurement: 10.5
+  upperArmMeasurement: 10.5
+  waistMeasurement: 12.5
+  comment: Lisa Simpson:Great Job Jennie
+
+Member(m1):
+  firstname: Homer
+  lastname: Simpson
+  dateOfBirth: 1975-09-17
+  gender: Male
+  height: 1.8
+  startingWeight: 250
+  phone: 051000000
+  email: homer@simpson.com
+  password: secret
+  measurementlist:
+  - a1
+
+Member(m2):
+  firstname: Lisa
+  lastname: Simpson
+  dateOfBirth: 2010-06-05
+  gender: Female
+  height: 1.4
+  startingWeight: 52
+  phone: 051000000
+  email: lisa@simpson.com
+  password: secret
+  measurementlist:
+  - a2
+
+Member(m3):
+  firstname: Barney
+  lastname: Gumble
+  dateOfBirth: 1975-09-17
+  gender: Male
+  height: 1.65
+  startingWeight: 101
+  phone: 051000000
+  email: barney@gumble.com
+  password: secret
+  measurementlist:
+  - a3
+
+Member(m4):
+  firstname: Carl
+  lastname: Carlson
+  dateOfBirth: 1975-09-17
+  gender: Male
+  height: 1.8
+  startingWeight: 85
+  phone: 051000000
+  email: carl@carlson@com
+  password: secret
+  measurementlist:
+  - a4
+
+Member(m5):
+  firstname: Clancy
+  lastname: Wiggum
+  dateOfBirth: 1975-09-17
+  gender: Unspecified
+  height: 1.8
+  startingWeight: 85
+  phone: 051000000
+  email: clancy@wiggum@com
+  password: secret
+  measurementlist:
+  - a5
+
+Member(m6):
+  firstname: Lenny
+  lastname: Leonard
+  dateOfBirth: 1975-09-17
+  gender: Male
+  height: 1.8
+  startingWeight: 85
+  phone: 051000000
+  email: lenny@leonard@com
+  password: secret
+  measurementlist:
+  - a6
+  - a7
+
+Trainer(t1):
+  firstname: Marge
+  lastname: Simpson
+  email: marge@simpson.com
+  password: secret
+  startDate: 2017-01-01
+
+
+Trainer(t2):
+  firstname: Bart
+  lastname: Simpson
+  email: bart@simpson.com
+  password: secret
+  startDate: 2017-01-01
