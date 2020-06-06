@@ -1,12 +1,12 @@
 package controllers;
-import controllers.Accounts;
+
+
 import models.Measurement;
 import models.Member;
 import play.Logger;
 import play.mvc.Controller;
 
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 public class MemberEdit extends Controller {
@@ -18,14 +18,13 @@ public class MemberEdit extends Controller {
         Measurement measurement;
         try {
             measurement = measurementlist.get(0);
-        }
-        catch (Exception e){
-            measurement =null;
+        } catch (Exception e) {
+            measurement = null;
         }
         render("memberedit.html", member, measurement);
     }
 
-    public static void editDetails(String firstname, String lastname,String address,
+    public static void editDetails(String firstname, String lastname, String address,
                                    int phone, String password) {
         Member member = Accounts.getLoggedInMember();
         Logger.info("Updating details for user " + member.email);

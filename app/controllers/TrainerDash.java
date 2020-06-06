@@ -28,7 +28,7 @@ public class TrainerDash extends Controller {
         memberList.remove(member);
         member.save();
         member.delete();
-        Logger.info("Deleting " + member.firstname + " " + member.lastname );
+        Logger.info("Deleting " + member.firstname + " " + member.lastname);
         redirect("/trainerdashboard");
     }
 
@@ -36,8 +36,8 @@ public class TrainerDash extends Controller {
         Logger.info("Rendering View Member");
         Member member = Member.findById(id);
         String BMICategory = GymUtility.determineBMICategory(id);
-        String idealBW = GymUtility.isIdealBodyWeight();
-        double getBMI = GymUtility.getBMI();
+        String idealBW = isIdealBodyWeight(id);
+        double getBMI = getBMI(id);
         List<Measurement> measurementlist = member.measurementlist;
         Collections.reverse(measurementlist);
         render("viewmember.html", member, measurementlist, BMICategory, idealBW, getBMI);
@@ -49,11 +49,43 @@ public class TrainerDash extends Controller {
         String trainerName = trainer.firstname + " " + trainer.lastname;
         Member member = Member.findById(id);
         Measurement measurement = Measurement.findById(measurementid);
-        measurement.setComment(trainerName + ":  "+comment);
+        measurement.setComment(trainerName + ":  " + comment);
         member.save();
         measurement.save();
         Logger.info("Editing " + measurement.dte + "Comment: " + comment);
         viewMember(id);
     }
 
+
+    public static String isIdealBodyWeight(Long id) {
+        Member member = Member.findById(id);
+        Measurement measurement;
+        if (member.measurementlist.size() > 0) {
+            measurement = member.measurementlist.get(0);
+        } else {
+            measurement = null;
+        }
+        String isIdeal;
+        Boolean ideal = GymUtility.isIdealBodyWeight(member, measurement);
+        if (ideal) {
+            isIdeal = "Ideal";
+        } else {
+            isIdeal = "Not Ideal";
+        }
+        Logger.info("Getting BMI Category");
+        return isIdeal;
+    }
+
+    public static double getBMI(Long id) {
+        Member member = Member.findById(id);
+        Measurement measurement;
+        if (member.measurementlist.size() > 0) {
+            measurement = member.measurementlist.get(0);
+        } else {
+            measurement = null;
+        }
+        double BMI = GymUtility.calculateBMI(member, measurement);
+        Logger.info("Getting BMI");
+        return BMI;
+    }
 }

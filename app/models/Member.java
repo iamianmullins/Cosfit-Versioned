@@ -1,6 +1,7 @@
 package models;
 
 import play.db.jpa.Model;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -9,8 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Member extends Model
-{
+public class Member extends Model {
     public String firstname;
     public String lastname;
     public String address;
@@ -24,15 +24,12 @@ public class Member extends Model
     public String password;
 
 
-
     @OneToMany(cascade = CascadeType.ALL)
     public List<Measurement> measurementlist = new ArrayList<Measurement>();
 
 
-
     public Member(String firstname, String lastname, String address, Date dateOfBirth, String gender,
-                  double height, double startingWeight, double mostRecentWeight, int phone, String email, String password)
-    {
+                  double height, double startingWeight, double mostRecentWeight, int phone, String email, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.address = address;
@@ -45,27 +42,24 @@ public class Member extends Model
         this.password = password;
     }
 
-    public double getBMI(){
+    public double getBMI() {
         double BMI;
-        if(measurementlist.size()>0) {
+        if (measurementlist.size() > 0) {
             Measurement measurement = measurementlist.get(measurementlist.size() - 1);
-            BMI = measurement.weightRecord/(height*height);
-        }
-        else{
-            BMI = startingWeight/(height*height);
+            BMI = measurement.weightRecord / (height * height);
+        } else {
+            BMI = startingWeight / (height * height);
         }
         return BMI;
     }
 
 
-    public static Member findByEmail(String email)
-    {
+    public static Member findByEmail(String email) {
         return find("email", email).first();
     }
 
 
-    public boolean checkPassword(String password)
-    {
+    public boolean checkPassword(String password) {
         return this.password.equals(password);
     }
 

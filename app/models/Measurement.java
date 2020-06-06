@@ -2,6 +2,7 @@ package models;
 
 import com.google.gson.internal.$Gson$Preconditions;
 import play.db.jpa.Model;
+
 import javax.persistence.Entity;
 import java.util.Date;
 

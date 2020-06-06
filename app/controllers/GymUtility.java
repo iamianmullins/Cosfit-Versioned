@@ -5,19 +5,14 @@ import models.Member;
 import models.Trainer;
 import play.Logger;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 
 /**
+ * @author Ian Mullins
  * @Utility Class
  * contains static methods and encapsulates no state (fields).
  * Methods contained provide analytics to the user through various metrics stored in the member and assessment classes
- * @author Ian Mullins
  */
 
 public class GymUtility {
@@ -25,17 +20,17 @@ public class GymUtility {
     /**
      * Returns the BMI for the member based on the calculation:
      * BMI is weight divided by the square of the height.
-     * @param member is the current member for which  BMI is being calculated, contains the height field
+     *
+     * @param member      is the current member for which  BMI is being calculated, contains the height field
      * @param measurement is the assessment for which  BMI is being calculated, contains the weightRecord field
      * @return double BMI calculated to two decimal places
      */
     public static double calculateBMI(Member member, Measurement measurement) {
         try {
             double latestWeight;
-            if(member.measurementlist.size()==0||measurement.getWeightRecord()==0){
+            if (member.measurementlist.size() == 0 || measurement.getWeightRecord() == 0) {
                 latestWeight = member.startingWeight;
-            }
-            else {
+            } else {
                 latestWeight = measurement.getWeightRecord();
             }
             double height = member.getHeight();
@@ -48,13 +43,13 @@ public class GymUtility {
 
     /**
      * double is passed as parameter
+     *
      * @param number double passed as parameter
      * @return double to two decimal places
      */
     public static double toTwoDecimalPlaces(double number) {
         return (int) (number * 100) / 100.0;
     }
-
     /**
      * Returns the category the BMI belongs to, based on the following values:
      * BMI less than 16 (exclusive) is "SEVERELY UNDERWEIGHT"
@@ -63,6 +58,7 @@ public class GymUtility {
      * BMI between 25 (inclusive) and 30 (exclusive) is "OVERWEIGHT"
      * BMI between 30 (inclusive) and 35 (exclusive) is "MODERATELY OBESE"
      * BMI greater than 35 (inclusive) and is "SEVERELY OBESE"
+     *
      * @param bmiValue value calulated in the calculateBMI method, passed as parameter
      * @return corresponding String defining category based on double passed as parameter
      */
@@ -96,13 +92,14 @@ public class GymUtility {
 
     /**
      * Returns a boolean to indicate if the member has an ideal body weight based on the Devine formula:
-     *
+     * <p>
      * For males, an ideal body weight is: 50 kg + 2.3 kg for each inch over 5 feet.
      * For females, an ideal body weight is: 45.5 kg + 2.3 kg for each inch over 5 feet.
      * Note: if no gender is specified, return the result of the female calculation.
      * Note: if the member is 5 feet or less, return 50kg for male and 45.5kg for female.
      * To allow for different calculations and rounding, when testing for the ideal body weight, if it is +/- .2 of the devine formula, return true
-     * @param member is the current member for which the boolean ideal body weight is returned
+     *
+     * @param member      is the current member for which the boolean ideal body weight is returned
      * @param measurement is the assessment for which the boolean ideal body weight is returned
      * @return boolean is ideal body weight within a tolerance of +/-.2 kg
      */
@@ -116,14 +113,13 @@ public class GymUtility {
 
             double memberWeight;
             try {
-                memberWeight  = measurement.getWeightRecord();
-            }
-            catch (Exception e) {
+                memberWeight = measurement.getWeightRecord();
+            } catch (Exception e) {
                 memberWeight = member.startingWeight;
             }
-            
+
             double memberHeight;
-            if ((member.getHeight())*mtrsToInch < baseHeight) {//conversion to cm,
+            if ((member.getHeight()) * mtrsToInch < baseHeight) {//conversion to cm,
                 memberHeight = baseHeight;
             } else {
                 memberHeight = member.getHeight() * mtrsToInch; //Height in cm
@@ -132,18 +128,16 @@ public class GymUtility {
             String gender = member.getGender();
             if (gender.equals("Male")) {
                 weightDifference = memberWeight - baseWeightMale;
-            }
-            else{
+            } else {
                 weightDifference = memberWeight - baseWeightFemale;
             }
             double heightDifference = memberHeight - baseHeight;
-            double allowance  = heightDifference * 2.3; //2.3kg allowance per inch over 5 foot
-            double weightAllowanceDifference = weightDifference-allowance;
+            double allowance = heightDifference * 2.3; //2.3kg allowance per inch over 5 foot
+            double weightAllowanceDifference = weightDifference - allowance;
 
             if ((weightAllowanceDifference >= -0.2) && (weightAllowanceDifference <= 0.2)) {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         } catch (Exception e) {
@@ -153,10 +147,10 @@ public class GymUtility {
 
     public static double averageBmi(List<Member> members) {
         double total = 0;
-        for (Member member: members){
+        for (Member member : members) {
             total = total + member.getBMI();
         }
-        double average  = total/members.size();
+        double average = total / members.size();
         return toTwoDecimalPlaces(average);
     }
 
@@ -196,7 +190,7 @@ public class GymUtility {
         } else {
             measurement = null;
         }
-        String isIdeal ="";
+        String isIdeal = "";
         if (isIdealBodyWeight(member, measurement)) {
             isIdeal = "Ideal";
         } else if (!GymUtility.isIdealBodyWeight(member, measurement)) {
@@ -205,10 +199,6 @@ public class GymUtility {
         Logger.info("Getting Ideal Body Weight boolean");
         return isIdeal;
     }
-
-
-
-
 
 
     public static int numberOfMembers() {

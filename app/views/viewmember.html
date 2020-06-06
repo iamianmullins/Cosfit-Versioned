@@ -12,79 +12,78 @@
 
 
 <div class="row">
-    <div class = "sixteen wide column">
+    <div class="sixteen wide column">
     #{list items:measurementlist, as:'measurement'}
-        <table class="ui table">
-            <table class="ui center aligned selectable inverted fluid table">
-            <thead>
-            <tr>
-                <th> Date - Time</th>
-                <th>Height</th>
-                <th>Weight Measurement</th>
-                <th>Chest Measurement</th>
-                <th>Abdominal Measurement</th>
-                <th>Thigh Measurement</th>
-                <th>UpperArm Measurement</th>
-                <th>Waist Measurement</th>
-                <th>Trend</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td> ${measurement.dte} </td>
-                <td> ${member.height} </td>
-                <td> ${measurement.weightRecord} </td>
-                <td> ${measurement.chestMeasurement} </td>
-                <td> ${measurement.abdominalMeasurement} </td>
-                <td> ${measurement.thighMeasurement} </td>
-                <td> ${measurement.upperArmMeasurement} </td>
-                <td> ${measurement.waistMeasurement} </td>
-                #{if measurement.previousWeight >  measurement.weightRecord}
-                    <td><span class="ui green right ribbon label"><i class="ui large inverted arrow alternate circle down icon"></i></span></td>
-                #{/if}
-                #{elseif  measurement.previousWeight <  measurement.weightRecord}
-                    <td><span class="ui orange right ribbon label"><i class="ui large inverted arrow alternate circle up icon"></i></span></td>
-                #{/elseif}
-                #{else}
-                    <td><span class="ui blue right ribbon label"><i class="ui large inverted circle icon"></i></span></td>
-                #{/else}
-            <tr>
-            <td>Assessment Comment</td>
+    <table class="ui table">
+    <table class="ui center aligned selectable inverted fluid table">
+        <thead>
+        <tr>
+            <th> Date - Time</th>
+            <th>Height</th>
+            <th>Weight Measurement</th>
+            <th>Chest Measurement</th>
+            <th>Abdominal Measurement</th>
+            <th>Thigh Measurement</th>
+            <th>UpperArm Measurement</th>
+            <th>Waist Measurement</th>
+            <th>Trend</th>
+        </tr>
+        </thead>
+    <tbody>
+    <tr>
+        <td> ${measurement.dte} </td>
+        <td> ${member.height} </td>
+        <td> ${measurement.weightRecord} </td>
+        <td> ${measurement.chestMeasurement} </td>
+        <td> ${measurement.abdominalMeasurement} </td>
+        <td> ${measurement.thighMeasurement} </td>
+        <td> ${measurement.upperArmMeasurement} </td>
+        <td> ${measurement.waistMeasurement} </td>
+        #{if measurement.previousWeight >  measurement.weightRecord}
+            <td><span class="ui green right ribbon label"><i
+                    class="ui large inverted arrow alternate circle down icon"></i></span></td>
+        #{/if}
+        #{elseif  measurement.previousWeight <  measurement.weightRecord}
+            <td><span class="ui orange right ribbon label"><i
+                    class="ui large inverted arrow alternate circle up icon"></i></span></td>
+        #{/elseif}
+        #{else}
+            <td><span class="ui blue right ribbon label"><i class="ui large inverted circle icon"></i></span></td>
+        #{/else}
+    <tr>
+        <td>Assessment Comment</td>
 
-                <td colspan="2">${measurement.comment}</td>
-                <td colspan="6"></td>
-            </tr>
-            <tr>
-                <td>Update Comment</td>
-                <td colspan="2">
-                    <form class="ui fluid form" action="/viewmember/${member.id}/editcomment/${measurement.id}" method="POST">
-                    <div class="field">
-                        <input placeholder="comment" type="text" name="comment" required>
-                    </div>
+        <td colspan="2">${measurement.comment}</td>
+        <td colspan="6"></td>
+    </tr>
+    <tr>
+        <td>Update Comment</td>
+        <td colspan="2">
+            <form class="ui fluid form" action="/viewmember/${member.id}/editcomment/${measurement.id}" method="POST">
+                <div class="field">
+                    <input placeholder="comment" type="text" name="comment" required>
+                </div>
 
-                </td>
-                <td>
-                    <button class="ui vertical animated fluid blue submit button" tabindex="0">
-                    <div class="hidden content"><span class="ui inverted text">Edit Comment</span></div>
-                    <div class="visible content">
-                        <i class="ui check circle icon"></i>
-                    </div>
-                    </button>
-                    </form>
-                </td>
-                <td colspan="4"></td>
-            </tr>
-            </tr>
-            #{/list}
-            </tbody>
-        </table>
+        </td>
+        <td>
+            <button class="ui vertical animated fluid blue submit button" tabindex="0">
+                <div class="hidden content"><span class="ui inverted text">Edit Comment</span></div>
+                <div class="visible content">
+                    <i class="ui check circle icon"></i>
+                </div>
+            </button>
+            </form>
+        </td>
+        <td colspan="4"></td>
+    </tr>
+    </tr>
+    #{/list}
+    </tbody>
+    </table>
     </div>
 
 
-
-
 </div>
-
 
 
 </section>

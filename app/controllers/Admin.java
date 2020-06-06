@@ -6,23 +6,26 @@ import models.Trainer;
 import play.Logger;
 import play.mvc.Controller;
 
+import java.util.Date;
 import java.util.List;
 
-public class Admin extends Controller
-{
-    public static void index()
-    {
+public class Admin extends Controller {
+    public static void index() {
         Logger.info("Rendering Admin");
-        Member member = Accounts.getLoggedInMember();
         Trainer trainer = Accounts.getLoggedInTrainer();
-        List<Measurement> measurementlist=null;
-        List<Member> memberList=null;
-        if (member!=null) {
-            measurementlist = Measurement.findAll();
-        }
-        else if (trainer!=null) {
+        List<Member> memberList = null;
+        List<Trainer> trainerList = null;
+        if (trainer != null) {
             memberList = Member.findAll();
+            trainerList = Trainer.findAll();
         }
-        render("admin.html", memberList, measurementlist);
+        render("admin.html", memberList, trainerList);
+    }
+
+    public static void registerTrainer(String firstname, String lastname, String email, String password) {
+        Logger.info("Registering new trainer " + email);
+        Trainer trainer = new Trainer(firstname, lastname, email, password);
+        trainer.save();
+        redirect("/admin");
     }
 }

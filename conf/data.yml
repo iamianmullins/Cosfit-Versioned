@@ -1,97 +1,90 @@
 Measurement(a1):
   dte: Sat May 30 - 15:32:03
-  previousWeight: 98
+  previousWeight: 93.2
   weightRecord: 93.2
-  height: 1.8
   chestMeasurement: 10.5
   abdominalMeasurement: 10.5
   thighMeasurement: 10.5
   upperArmMeasurement: 10.5
   waistMeasurement: 12.5
-  comment: Lisa Simpson:Good job
+  comment: Marge Simpson:Good job
 
 Measurement(a2):
   dte: Sun May 30 - 20:32:03
-  previousWeight: 98
-  weightRecord: 100
-  height: 1.8
+  previousWeight: 52
+  weightRecord: 52
   chestMeasurement: 10.5
   abdominalMeasurement: 10.5
   thighMeasurement: 10.5
   upperArmMeasurement: 10.5
   waistMeasurement: 12.5
-  comment: Lisa Simpson:Cool Beans
+  comment: Marge Simpson:Keep it up
 
 Measurement(a3):
   dte: Mon May 30 - 12:32:03
-  previousWeight: 98
-  weightRecord: 100
-  height: 1.8
+  previousWeight: 101
+  weightRecord: 101
   chestMeasurement: 10.5
   abdominalMeasurement: 10.5
   thighMeasurement: 10.5
   upperArmMeasurement: 10.5
   waistMeasurement: 12.5
-  comment: Lisa Simpson:Nice One
+  comment: Marge Simpson:Nice One
 
 Measurement(a4):
   dte: Sat May 30 - 15:32:03
-  previousWeight: 98
-  weightRecord: 100
-  height: 1.8
+  previousWeight: 55
+  weightRecord: 55
   chestMeasurement: 10.5
   abdominalMeasurement: 10.5
   thighMeasurement: 10.5
   upperArmMeasurement: 10.5
   waistMeasurement: 12.5
-  comment: Lisa Simpson:Well Done
+  comment: Bart Simpson:Well Done
 
 Measurement(a5):
   dte: Sun May 30 - 20:32:03
-  previousWeight: 98
-  weightRecord: 100
-  height: 1.8
+  previousWeight: 105
+  weightRecord: 105
   chestMeasurement: 10.5
   abdominalMeasurement: 10.5
   thighMeasurement: 10.5
   upperArmMeasurement: 10.5
   waistMeasurement: 12.5
-  comment: Lisa Simpson:Great work
+  comment: Maggie Simpson:Fantastic stuff
 
 Measurement(a6):
   dte: Mon May 30 - 12:32:03
-  previousWeight: 98
-  weightRecord: 100
-  height: 1.8
+  previousWeight: 85
+  weightRecord: 85
   chestMeasurement: 10.5
   abdominalMeasurement: 10.5
   thighMeasurement: 10.5
   upperArmMeasurement: 10.5
   waistMeasurement: 12.5
-  comment: Lisa Simpson:Great Job
+  comment: Bart Simpson:Great Job
 
 Measurement(a7):
   dte: Mon May 29 - 12:32:03
-  previousWeight: 98
-  weightRecord: 100
-  height: 1.8
+  previousWeight: 79
+  weightRecord: 79
   chestMeasurement: 10.5
   abdominalMeasurement: 10.5
   thighMeasurement: 10.5
   upperArmMeasurement: 10.5
   waistMeasurement: 12.5
-  comment: Lisa Simpson:Great Job Jennie
+  comment: Maggie Simpson:Awesome progress
 
 Member(m1):
   firstname: Homer
   lastname: Simpson
   address: Springfield, Evergreen Terrace
-  dateOfBirth: 1975-09-17
+  dateOfBirth: 1966-09-17
   gender: Male
   height: 2.0
   mostRecentWeight: 93.2
   startingWeight: 93.2
-  phone: 051000000
+  phone: 051123456
   email: homer@simpson.com
   password: secret
   measurementlist:
@@ -106,7 +99,7 @@ Member(m2):
   height: 1.4
   mostRecentWeight: 52
   startingWeight: 52
-  phone: 051000000
+  phone: 05116565
   email: lisa@simpson.com
   password: secret
   measurementlist:
@@ -121,7 +114,7 @@ Member(m3):
   height: 1.65
   mostRecentWeight: 101
   startingWeight: 101
-  phone: 051000000
+  phone: 051065262
   email: barney@gumble.com
   password: secret
   measurementlist:
@@ -131,27 +124,27 @@ Member(m4):
   firstname: Carl
   lastname: Carlson
   address: Springfield, Nuclear Plant
-  dateOfBirth: 1975-09-17
+  dateOfBirth: 1981-06-11
   gender: Male
-  height: 1.8
-  mostRecentWeight: 85
-  startingWeight: 85
-  phone: 051000000
+  height: 2.2
+  mostRecentWeight: 55
+  startingWeight: 55
+  phone: 051011124
   email: carl@carlson@com
   password: secret
   measurementlist:
   - a4
 
 Member(m5):
-  firstname: Ralph
+  firstname: Clancy
   lastname: Wiggum
-  address: Springfield
+  address: Springfield, police station
   dateOfBirth: 1975-09-17
   gender: Unspecified
-  height: 1.8
-  mostRecentWeight: 85
-  startingWeight: 85
-  phone: 051000000
+  height: 1.85
+  mostRecentWeight: 105
+  startingWeight: 105
+  phone: 0515151
   email: clancy@wiggum@com
   password: secret
   measurementlist:
@@ -160,13 +153,13 @@ Member(m5):
 Member(m6):
   firstname: Lenny
   lastname: Leonard
-  address: Springfield
-  dateOfBirth: 1975-09-17
+  address: Springfield, Nuclear Plant
+  dateOfBirth: 1980-04-15
   gender: Male
-  height: 1.8
+  height: 1.75
   mostRecentWeight: 85
   startingWeight: 85
-  phone: 051000000
+  phone: 051095987
   email: lenny@leonard@com
   password: secret
   measurementlist:
@@ -178,19 +171,15 @@ Trainer(t1):
   lastname: Simpson
   email: marge@simpson.com
   password: secret
-  startDate: 2017-01-01
-
 
 Trainer(t2):
   firstname: Bart
   lastname: Simpson
   email: bart@simpson.com
   password: secret
-  startDate: 2017-01-01
 
 Trainer(t3):
   firstname: Maggie
   lastname: Simpson
   email: maggie@simpson.com
   password: secret
-  startDate: 2017-01-01

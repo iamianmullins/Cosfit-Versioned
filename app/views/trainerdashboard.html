@@ -5,101 +5,102 @@
 
 
 <div class="ui grid center aligned">
-  <div class="row">
-  </div>
-  <div class="four wide column">
-    <div class="tiny content ui  statistic">
-    <div class="value">
-      <i class="blue user icon"></i>
-      <hr></hr>
-      <div class="value">Trainer Name</div>
-      <hr></hr>
-      <div class="value">${trainer.firstname} ${trainer.lastname}</div>
+    <div class="row">
     </div>
-  </div>
-  </div>
-  <div class="four wide column">
-    <div class="tiny content ui  statistic">
-      <div class="value">
-        <i class="green user friends icon"></i>
-        <hr></hr>
-        <div class="value">Number of Trainers</div>
-        <hr></hr>
-        <div class="value">${numberOfTrainers}</div>
-      </div>
+    <div class="four wide column">
+        <div class="tiny content ui  statistic">
+            <div class="value">
+                <i class="blue user icon"></i>
+                <hr></hr>
+                <div class="value">Trainer Name</div>
+                <hr></hr>
+                <div class="value">${trainer.firstname} ${trainer.lastname}</div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="four wide column">
-    <div class="tiny content ui statistic">
-      <div class="value">
-        <i class="orange user friends icon"></i>
-        <hr></hr>
-        <div class="value">Number of Members</div>
-        <hr></hr>
-        <div class="value">${numberOfMembers}</div>
-      </div>
+    <div class="four wide column">
+        <div class="tiny content ui  statistic">
+            <div class="value">
+                <i class="green user friends icon"></i>
+                <hr></hr>
+                <div class="value">Number of Trainers</div>
+                <hr></hr>
+                <div class="value">${numberOfTrainers}</div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="four wide column">
-    <div class="tiny content ui statistic">
-      <div class="value">
-        <i class="red heartbeat icon"></i>
-        <hr></hr>
-        <div class="value">Members: Average BMI</div>
-        <hr></hr>
-        <div class="value">${averageBmi} </div>
-      </div>
+    <div class="four wide column">
+        <div class="tiny content ui statistic">
+            <div class="value">
+                <i class="orange user friends icon"></i>
+                <hr></hr>
+                <div class="value">Number of Members</div>
+                <hr></hr>
+                <div class="value">${numberOfMembers}</div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="row">
-  </div>
+    <div class="four wide column">
+        <div class="tiny content ui statistic">
+            <div class="value">
+                <i class="red heartbeat icon"></i>
+                <hr></hr>
+                <div class="value">Members: Average BMI</div>
+                <hr></hr>
+                <div class="value">${averageBmi} </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    </div>
 </div>
 
 <div class="row">
-  <div class = "sixteen wide column">
+    <div class="sixteen wide column">
 
-    <table class="ui selectable inverted celled table">
-      <thead>
-      <tr>
-        <th>Member Name</th>
-        <th>ID/Email</th>
-        <th>View Member</th>
-        <th>Delete Member</th>
-      </tr>
-      </thead>
-      <tbody>
+        <table class="ui selectable inverted celled table">
+            <thead>
+            <tr>
+                <th>Member Name</th>
+                <th>ID/Email</th>
+                <th>View Member</th>
+                <th>Delete Member</th>
+            </tr>
+            </thead>
+            <tbody>
 
-      #{list items:memberList, as:'member'}
-      <tr>
-        <td>${member.firstname + " " + member.lastname}   </td>
-        <td>${member.email}   </td>
-        <td>
-          <button class="ui vertical animated fluid blue button" tabindex="0">
-            <a href="/viewmember/${member.id}${} ">
-              <div class="visible content"><span class="ui black text">View Member</span></div>
-              <div class="hidden content">
-                <i class="ui inverted user icon"></i>
-              </div>
-            </a>
-          </button>
-        </td>
-        <td> <button class="ui vertical animated fluid negative button" tabindex="0">
-          <a href="/deletemember/${member.id}${} ">
-            <div class="visible content"><span class="ui black text">Delete Member</span></div>
-            <div class="hidden content">
-              <i class="ui inverted user minus icon"></i>
-            </div>
-          </a>
-        </button>
-        </td>
-      </tr>
+            #{list items:memberList, as:'member'}
+            <tr>
+                <td>${member.firstname + " " + member.lastname}   </td>
+                <td>${member.email}   </td>
+                <td>
+                    <button class="ui vertical animated fluid blue button" tabindex="0">
+                        <a href="/viewmember/${member.id}${} ">
+                            <div class="visible content"><span class="ui black text">View Member</span></div>
+                            <div class="hidden content">
+                                <i class="ui inverted user icon"></i>
+                            </div>
+                        </a>
+                    </button>
+                </td>
+                <td>
+                    <button class="ui vertical animated fluid negative button" tabindex="0">
+                        <a href="/deletemember/${member.id}${} ">
+                            <div class="visible content"><span class="ui black text">Delete Member</span></div>
+                            <div class="hidden content">
+                                <i class="ui inverted user minus icon"></i>
+                            </div>
+                        </a>
+                    </button>
+                </td>
+            </tr>
 
-      #{/list}
-      </tbody>
-    </table>
-  </div>
+            #{/list}
+            </tbody>
+        </table>
+    </div>
 
-  
+
 </div>
 </section>
 

@@ -1,0 +1,91 @@
+#{extends 'main.html' /}
+#{set title:'Admin' /}
+
+<section class="ui raised segment">
+    <header class="ui header">
+        Admin Panel
+    </header>
+
+    <header class="ui header">
+        Add Trainer
+    </header>
+
+    <div class="sixteen wide column">
+        <form class="ui fluid inverted segment form" action="/registertrainer" method="POST">
+            <table class="ui center aligned selectable inverted fluid table">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Add</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input placeholder="First Name" type="text" name="firstname" required></td>
+                    <td><input placeholder="Last Name" type="text" name="lastname" required></td>
+                    <td><input placeholder="Email" type="text" name="email" required></td>
+                    <td><input placeholder="Password" type="text" name="password" required></td>
+                    <td>
+                        <button class="ui vertical animated fluid green button" tabindex="0">
+                            <div class="hidden content"><span class="ui black text">Delete</span></div>
+                            <div class="visible content">
+                                <i class="ui check circle icon"></i>
+                            </div>
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+
+    <header class="ui header">
+        Trainer List
+    </header>
+    <table class="ui inverted fixed selectable table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Trainer Name</th>
+            <th>Trainer Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        #{list items:trainerList, as:'trainer'}
+            <tr>
+                <td> ${trainer.id}</td>
+                <td> ${trainer.firstname}   ${trainer.lastname}</td>
+                <td> ${trainer.email} </td>
+            </tr>
+        #{/list}
+        </tbody>
+    </table>
+
+    <header class="ui header">
+        Member List
+    </header>
+    <table class="ui inverted fixed selectable table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Member Name</th>
+            <th>Trainer Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        #{list items:memberList, as:'member'}
+        <tr>
+            <td> ${member.id}</td>
+            <td> ${member.firstname}   ${member.lastname}</td>
+            <td> ${member.email} </td>
+        </tr>
+        #{/list}
+        </div>
+        </tbody>
+    </table>
+</section>
