@@ -4,104 +4,9 @@
 #{menu id:"dashboard"/}
 
 
-<div class="ui grid center aligned">
-  <div class="row">
-  </div>
-  <div class="four wide column">
-    <div class="small content ui  statistic">
-    <div class="value">
-    #{if (getBMI >= 18.5 && getBMI< 25)}
-      <i class="green user icon"></i>
-    #{/if}
-    #{elseif (member.gender=="Male")}
-      <i class="blue user icon"></i>
-    #{/elseif}
-    #{elseif member.gender=="Female"}
-      <i class="pink user icon"></i>
-    #{/elseif}
-    #{else}
-      <i class="orange user icon"></i>
-    #{/else}
-            <hr></hr>
-      <div class="value">${member.firstname} ${member.lastname}</div>
-    </div>
-  </div>
-  </div>
-  <div class="four wide column">
-    <div class="small content ui statistic">
-      <div class="value">
-      #{if (getBMI)<16}
-        <i class="red weight icon"></i>
-      #{/if}
-      #{elseif (getBMI >= 16 && getBMI< 18.5)}
-        <i class="orange weight icon"></i>
-      #{/elseif}
-      #{elseif (getBMI >= 18.5 && getBMI< 25)}
-        <i class="green weight icon"></i>
-      #{/elseif}
-      #{elseif (getBMI >= 25 && getBMI< 30)}
-        <i class="orange weight icon"></i>
-      #{/elseif}
-      #{elseif (getBMI >= 30 && getBMI< 35)}
-        <i class="red weight icon"></i>
-      #{/elseif}
-      #{elseif (getBMI> 35)}
-        <i class="weight icon"></i>
-      #{/elseif}
-
-        <hr></hr>
-        <div class="value"> ${BMICategory}</div>
-      </div>
-    </div>
-  </div>
-  <div class="four wide column">
-    <div class="small content ui statistic">
-      <div class="value">
-      #{if (getBMI)<16}
-        <i class="red heartbeat icon"></i>
-      #{/if}
-      #{elseif (getBMI >= 16 && getBMI< 18.5)}
-        <i class="orange heartbeat icon"></i>
-      #{/elseif}
-      #{elseif (getBMI >= 18.5 && getBMI< 25)}
-        <i class="green heartbeat icon"></i>
-      #{/elseif}
-      #{elseif (getBMI >= 25 && getBMI< 30)}
-        <i class="orange heartbeat icon"></i>
-      #{/elseif}
-      #{elseif (getBMI >= 30 && getBMI< 35)}
-        <i class="red heartbeat icon"></i>
-      #{/elseif}
-      #{elseif (getBMI> 35)}
-        <i class="heartbeat icon"></i>
-      #{/elseif}
-        <hr></hr>
-        <div class="value">BMI ${getBMI}</div>
-
-      </div>
-    </div>
-  </div>
-  <div class="four wide column">
-    <div class="small content ui statistic">
-      <div class="value">
-      #{if (idealBW.equals("Ideal"))}
-        <i class="user green md icon"></i>
-      #{/if}
-      #{elseif (idealBW.equals("Not Ideal"))}
-        <i class="user red md icon"></i>
-      #{/elseif}
-
-        <hr></hr>
-        <div class="value">BMI ${idealBW}</div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-  </div>
+<div id="tree">
+#{include 'tags/memberanalytics.html' /}
 </div>
-
-
-
 
 <br>
 <hr>
@@ -154,15 +59,12 @@
 <br>
 
 
-
-
-
-
   <div class="row">
   <div class = "sixteen wide column">
     <table class="ui center aligned selectable inverted fluid table">
       <thead>
       <tr>
+        <th></th>
         <th> Date - Time</th>
         <th>Height</th>
         <th>Weight Measurement</th>
@@ -178,6 +80,7 @@
       <tbody>
       #{list items:measurementlist, as:'measurement'}
       <tr>
+        <td><span class="ui blue ribbon label"><i class="ui inverted exclamation icon"></i></span></td>
         <td> ${measurement.dte} </td>
         <td> ${member.height} </td>
         <td> ${measurement.weightRecord} </td>
@@ -186,7 +89,7 @@
         <td> ${measurement.thighMeasurement} </td>
         <td> ${measurement.upperArmMeasurement} </td>
         <td> ${measurement.waistMeasurement} </td>
-        <td> ${measurement.comment} </td>
+        <td> ${measurement.comment}</td>
         <td><button class="ui vertical animated fluid negative button" tabindex="0">
           <a class="ui primary" href="/dashboard/${member.id}/deletemeasurement/${measurement.id} ">
             <div class="hidden content"><span class="ui black text">Delete</span></div>

@@ -4,59 +4,11 @@
 #{trainermenu id:"trainerdashboard"/}
 
 
-<div class="ui grid center aligned">
-    <div class="row">
-    </div>
-    <div class="four wide column">
-        <div class="small content ui  statistic">
-            <div class="value">
-                <i class="blue user icon"></i>
-                <hr></hr>
-                <div class="value">${member.firstname} ${member.lastname}</div>
-            </div>
-        </div>
-    </div>
-    <div class="four wide column">
-        <div class="small content ui statistic">
-            <div class="value">
-                <i class="orange weight icon"></i>
-
-                <hr></hr>
-                <div class="value"> ${BMICategory}</div>
-            </div>
-        </div>
-    </div>
-    <div class="four wide column">
-        <div class="small content ui statistic">
-            <div class="value">
-                <i class="red heartbeat icon"></i>
-
-                <hr></hr>
-                <div class="value">BMI ${getBMI}</div>
-            </div>
-        </div>
-    </div>
-    <div class="four wide column">
-        <div class="small content ui statistic">
-            <div class="value">
-                <i class="user md icon"></i>
-                <hr></hr>
-                <div class="value">BMI class ${idealBW}</div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-    </div>
+<div id="tree">
+#{include 'tags/memberanalytics.html' /}
 </div>
 
-</div> <!--end of row-->
-
 <br>
-
-
-
-
-
 
 
 <div class="row">

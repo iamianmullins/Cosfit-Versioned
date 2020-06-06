@@ -15,7 +15,13 @@ public class MemberEdit extends Controller {
         Member member = Accounts.getLoggedInMember();
         List<Measurement> measurementlist = member.measurementlist;
         Collections.reverse(measurementlist);
-        Measurement measurement = measurementlist.get(0);
+        Measurement measurement;
+        try {
+            measurement = measurementlist.get(0);
+        }
+        catch (Exception e){
+            measurement =null;
+        }
         render("memberedit.html", member, measurement);
     }
 

@@ -13,6 +13,7 @@ public class Member extends Model
 {
     public String firstname;
     public String lastname;
+    public String address;
     public Date dateOfBirth;
     public String gender;
     public double height;
@@ -26,11 +27,12 @@ public class Member extends Model
     @OneToMany(cascade = CascadeType.ALL)
     public List<Measurement> measurementlist = new ArrayList<Measurement>();
 
-    public Member(String firstname, String lastname, Date dateOfBirth, String gender,
+    public Member(String firstname, String lastname, String address, Date dateOfBirth, String gender,
                   double height, double startingWeight, int phone, String email, String password)
     {
         this.firstname = firstname;
         this.lastname = lastname;
+        this.address = address;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.height = height;

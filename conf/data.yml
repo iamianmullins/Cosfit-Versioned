@@ -78,6 +78,7 @@ Measurement(a7):
 Member(m1):
   firstname: Homer
   lastname: Simpson
+  address: Springfield, Evergreen Terrace
   dateOfBirth: 1975-09-17
   gender: Male
   height: 2.0
@@ -91,6 +92,7 @@ Member(m1):
 Member(m2):
   firstname: Lisa
   lastname: Simpson
+  address: Springfield, Evergreen Terrace
   dateOfBirth: 2010-06-05
   gender: Female
   height: 1.4
@@ -104,6 +106,7 @@ Member(m2):
 Member(m3):
   firstname: Barney
   lastname: Gumble
+  address: Springfield, Moes Tavern
   dateOfBirth: 1975-09-17
   gender: Male
   height: 1.65
@@ -117,6 +120,7 @@ Member(m3):
 Member(m4):
   firstname: Carl
   lastname: Carlson
+  address: Springfield, Nuclear Plant
   dateOfBirth: 1975-09-17
   gender: Male
   height: 1.8
@@ -128,8 +132,9 @@ Member(m4):
   - a4
 
 Member(m5):
-  firstname: Clancy
+  firstname: Ralph
   lastname: Wiggum
+  address: Springfield
   dateOfBirth: 1975-09-17
   gender: Unspecified
   height: 1.8
@@ -143,6 +148,7 @@ Member(m5):
 Member(m6):
   firstname: Lenny
   lastname: Leonard
+  address: Springfield
   dateOfBirth: 1975-09-17
   gender: Male
   height: 1.8
@@ -166,5 +172,12 @@ Trainer(t2):
   firstname: Bart
   lastname: Simpson
   email: bart@simpson.com
+  password: secret
+  startDate: 2017-01-01
+
+Trainer(t3):
+  firstname: Maggie
+  lastname: Simpson
+  email: maggie@simpson.com
   password: secret
   startDate: 2017-01-01
