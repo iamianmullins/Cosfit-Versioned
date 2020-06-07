@@ -10,11 +10,18 @@ import java.util.List;
 public class Admin extends Controller {
     public static void index() {
         Logger.info("Rendering Admin");
-        List<Member> memberList = Member.findAll();;
-        List<Trainer> trainerList = Trainer.findAll();
-        int memberCount = GymUtility.numberOfMembers();
-        int trainerCount = GymUtility.numberOfTrainers();
-        render("admin.html", memberList, trainerList, memberCount, trainerCount);
+        Member member = Accounts.getLoggedInMember();
+        if (member == null) {
+            List<Member> memberList = Member.findAll();
+            List<Trainer> trainerList = Trainer.findAll();
+            int memberCount = GymUtility.numberOfMembers();
+            int trainerCount = GymUtility.numberOfTrainers();
+            render("admin.html", memberList, trainerList, memberCount, trainerCount);
+        }
+        else{
+            Logger.info("Access to admin denied");
+            Start.index();
+        }
     }
 
     public static void deleteMember(Long id) {
