@@ -6,8 +6,10 @@
 GET     /                                               Start.index
 GET     /signup                                         Accounts.signup
 GET     /login                                          Accounts.login
+GET     /admin/deletemember/{id}                        Admin.deleteMember
+GET     /admin/deletetrainer/{id}                       Admin.deleteTrainer
 POST    /register                                       Accounts.register
-POST    /registertrainer                                Admin.registerTrainer
+POST    /registertrainer                                Accounts.registerTrainer
 POST    /authenticate                                   Accounts.authenticate
 GET     /dashboard                                      Dashboard.index
 GET     /memberedit                                     MemberEdit.index
@@ -18,8 +20,8 @@ GET     /admin                                          Admin.index
 POST    /dashboard/addmeasurement                       Dashboard.addMeasurement
 GET     /dashboard/{id}/deletemeasurement/{measurementid}     Dashboard.deleteMeasurement
 GET     /deletemember/{id}                              TrainerDash.deleteMember
-GET     /viewmember/{id}                                TrainerDash.viewMember
-POST     /viewmember/{id}/editcomment/{measurementid}    TrainerDash.editComment
+GET     /viewmember/{id}                                ViewMember.index
+POST     /viewmember/{id}/editcomment/{measurementid}    ViewMember.editComment
 GET     /logout                                         Accounts.logout
 
 

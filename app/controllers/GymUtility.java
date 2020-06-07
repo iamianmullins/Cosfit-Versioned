@@ -182,19 +182,7 @@ public class GymUtility {
         return BMICategory;
     }
 
-    public static String determineMemberBMICategory(Long id) {
-        Member member = Member.findById(id);
-        Measurement measurement;
-        if (member.measurementlist.size() > 0) {
-            measurement = member.measurementlist.get(0);
-        } else {
-            measurement = null;
-        }
-        double BMI = GymUtility.calculateBMI(member, measurement);
-        String BMICategory = GymUtility.determineBMICategory(BMI);
-        Logger.info("Getting BMI Category");
-        return BMICategory;
-    }
+
 
     public static String isIdealBodyWeight() {
         Member member = Accounts.getLoggedInMember();
@@ -215,24 +203,54 @@ public class GymUtility {
     }
 
 
+    /**
+     * -----------Gym analytics for Trainer Dashboard
+     */
+
+    /**
+     * Passes param to find member by id
+     * member and assessment passed to calculateBMI method
+     * BMI category returned
+     */
+    public static String determineMemberBMICategory(Long id) {
+        Member member = Member.findById(id);
+        Measurement measurement;
+        if (member.measurementlist.size() > 0) {
+            measurement = member.measurementlist.get(0);
+        } else {
+            measurement = null;
+        }
+        double BMI = GymUtility.calculateBMI(member, measurement);
+        String BMICategory = GymUtility.determineBMICategory(BMI);
+        Logger.info("Getting BMI Category");
+        return BMICategory;
+    }
+
+    /**
+     * returns number of members
+     */
     public static int numberOfMembers() {
         List<Member> memberList = Member.findAll();
         int numberOfMembers = memberList.size();
         return numberOfMembers;
     }
 
+    /**
+     * returns number of trainers
+     */
     public static int numberOfTrainers() {
         List<Trainer> trainerList = Trainer.findAll();
         int numberOfTrainers = trainerList.size();
         return numberOfTrainers;
     }
 
+    /**
+     * average BMI for all members
+     */
     public static double averageBmi() {
         List<Member> memberList = Member.findAll();
         double average = GymUtility.averageBmi(memberList);
         return average;
     }
-
-
 
 }

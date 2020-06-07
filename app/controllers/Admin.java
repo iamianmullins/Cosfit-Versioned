@@ -1,31 +1,41 @@
 package controllers;
 
-import models.Measurement;
 import models.Member;
 import models.Trainer;
 import play.Logger;
 import play.mvc.Controller;
 
-import java.util.Date;
 import java.util.List;
 
 public class Admin extends Controller {
     public static void index() {
         Logger.info("Rendering Admin");
-        Trainer trainer = Accounts.getLoggedInTrainer();
-        List<Member> memberList = null;
-        List<Trainer> trainerList = null;
-        if (trainer != null) {
-            memberList = Member.findAll();
-            trainerList = Trainer.findAll();
-        }
-        render("admin.html", memberList, trainerList);
+        List<Member> memberList = Member.findAll();;
+        List<Trainer> trainerList = Trainer.findAll();
+        int memberCount = GymUtility.numberOfMembers();
+        int trainerCount = GymUtility.numberOfTrainers();
+        render("admin.html", memberList, trainerList, memberCount, trainerCount);
     }
 
-    public static void registerTrainer(String firstname, String lastname, String email, String password) {
-        Logger.info("Registering new trainer " + email);
-        Trainer trainer = new Trainer(firstname, lastname, email, password);
-        trainer.save();
+    public static void deleteMember(Long id) {
+        List<Member> memberList = Member.findAll();
+        Member member = Member.findById(id);
+        memberList.remove(member);
+        member.save();
+        member.delete();
+        Logger.info("Deleting " + member.firstname + " " + member.lastname);
         redirect("/admin");
     }
+
+    public static void deleteTrainer(Long id) {
+        List<Trainer> memberList = Trainer.findAll();
+        Trainer trainer = Trainer.findById(id);
+        memberList.remove(trainer);
+        trainer.save();
+        trainer.delete();
+        Logger.info("Deleting " + trainer.firstname + " " + trainer.lastname);
+        redirect("/admin");
+    }
+
+
 }

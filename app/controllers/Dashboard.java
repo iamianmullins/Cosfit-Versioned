@@ -51,6 +51,4 @@ public class Dashboard extends Controller {
         Logger.info("Deleting " + measurement.dte);
         redirect("/dashboard");
     }
-
-
 }

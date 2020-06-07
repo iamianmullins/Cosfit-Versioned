@@ -3,6 +3,9 @@ package controllers;
 import play.Logger;
 import play.mvc.Controller;
 
+/**
+ * Renders Start.html
+ */
 public class Start extends Controller {
     public static void index() {
         Logger.info("Rendering Start");

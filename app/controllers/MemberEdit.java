@@ -9,6 +9,9 @@ import play.mvc.Controller;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Renders Member dashboard edit details form
+ */
 public class MemberEdit extends Controller {
     public static void index() {
         Logger.info("Rendering MemberEdit");
@@ -24,6 +27,9 @@ public class MemberEdit extends Controller {
         render("memberedit.html", member, measurement);
     }
 
+    /**
+     * Member dashboard edit details form
+     */
     public static void editDetails(String firstname, String lastname, String address,
                                    int phone, String password) {
         Member member = Accounts.getLoggedInMember();

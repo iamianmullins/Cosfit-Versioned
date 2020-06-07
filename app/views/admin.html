@@ -1,6 +1,8 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
+#{adminmenu id:"Admin"/}
+
 <section class="ui raised segment">
     <header class="ui header">
         Admin Panel
@@ -9,7 +11,8 @@
     <header class="ui header">
         Add Trainer
     </header>
-
+    <div class="ui red message">Only use this screen if you are authorised to do so.
+        If you are not authorised, please log out immediately!</div>
     <div class="sixteen wide column">
         <form class="ui fluid inverted segment form" action="/registertrainer" method="POST">
             <table class="ui center aligned selectable inverted fluid table">
@@ -45,7 +48,7 @@
 
 
     <header class="ui header">
-        Trainer List
+        Trainer List: ${trainerCount}
     </header>
     <table class="ui inverted fixed selectable table">
         <thead>
@@ -53,6 +56,7 @@
             <th>ID</th>
             <th>Trainer Name</th>
             <th>Trainer Email</th>
+            <th>Delete Trainer</th>
         </tr>
         </thead>
         <tbody>
@@ -61,20 +65,30 @@
                 <td> ${trainer.id}</td>
                 <td> ${trainer.firstname}   ${trainer.lastname}</td>
                 <td> ${trainer.email} </td>
+                <td><button class="ui vertical animated fluid negative button" tabindex="0">
+                    <a href="/admin/deletetrainer/${trainer.id}${} ">
+                        <div class="visible content"><span class="ui black text">Delete Trainer</span></div>
+                        <div class="hidden content">
+                            <i class="ui inverted user minus icon"></i>
+                        </div>
+                    </a>
+                </button>
+                </td>
             </tr>
         #{/list}
         </tbody>
     </table>
 
     <header class="ui header">
-        Member List
+        Member List: ${memberCount}
     </header>
     <table class="ui inverted fixed selectable table">
         <thead>
         <tr>
             <th>ID</th>
             <th>Member Name</th>
-            <th>Trainer Email</th>
+            <th>Member Email</th>
+            <th>Delete Member</th>
         </tr>
         </thead>
         <tbody>
@@ -83,6 +97,15 @@
             <td> ${member.id}</td>
             <td> ${member.firstname}   ${member.lastname}</td>
             <td> ${member.email} </td>
+            <td><button class="ui vertical animated fluid negative button" tabindex="0">
+                <a href="/admin/deletemember/${member.id}${} ">
+                    <div class="visible content"><span class="ui black text">Delete Member</span></div>
+                    <div class="hidden content">
+                        <i class="ui inverted user minus icon"></i>
+                    </div>
+                </a>
+            </button>
+            </td>
         </tr>
         #{/list}
         </div>

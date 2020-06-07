@@ -26,9 +26,10 @@ public class Accounts extends Controller {
      * Parameters passed from signup.html form
      */
     public static void register(String firstname, String lastname, String address, Date dateOfBirth, String gender,
-                                double height, double mostRecentWeight, double startingWeight, int phone, String email, String password) {
+                                double height, double startingWeight, int phone, String email, String password) {
         Logger.info("Registering new user " + email);
-        Member member = new Member(firstname, lastname, address, dateOfBirth, gender, height, mostRecentWeight, startingWeight, phone, email, password);
+        double mostRecentWeight = startingWeight;
+        Member member = new Member(firstname, lastname, address, dateOfBirth, gender, height, startingWeight, mostRecentWeight, phone, email, password);
         member.save();
         redirect("/");
     }
@@ -38,10 +39,10 @@ public class Accounts extends Controller {
      * Only accessed through admin menu
      */
     public static void registerTrainer(String firstname, String lastname, String email, String password) {
-        Logger.info("Registering new user " + email);
+        Logger.info("Registering new trainer " + email);
         Trainer trainer = new Trainer(firstname, lastname, email, password);
         trainer.save();
-        redirect("admin");
+        redirect("/admin");
     }
 
     /**
@@ -50,6 +51,9 @@ public class Accounts extends Controller {
      */
     public static void authenticate(String email, String password) {
         Logger.info("Attempting to authenticate with " + email + ":" + password);
+        if(email.equalsIgnoreCase("admin")&&(password.equalsIgnoreCase("secret"))){
+            Admin.index();
+        }
 
         Member member = Member.findByEmail(email);
         if ((member != null) && (member.checkPassword(password) == true)) {
