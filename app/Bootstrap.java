@@ -1,6 +1,7 @@
-import java.util.List;
+/**
+ *
+Deployed, yml not required
 
-import play.*;
 import play.jobs.*;
 import play.test.*;
 
@@ -14,3 +15,6 @@ public class Bootstrap extends Job {
         }
     }
 }
+
+
+ */
