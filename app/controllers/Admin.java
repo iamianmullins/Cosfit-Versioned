@@ -18,9 +18,9 @@ public class Admin extends Controller {
             int trainerCount = GymUtility.numberOfTrainers();
             render("admin.html", memberList, trainerList, memberCount, trainerCount);
         }
-        else{
-            Logger.info("Access to admin denied");
-            Start.index();
+        else if (member != null) {
+            Logger.info("Access to admin denied: " + member.email);
+            Dashboard.index();
         }
     }
 
