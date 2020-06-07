@@ -83,14 +83,6 @@ public class Member extends Model {
         this.lastname = lastname;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public void setPhone(int phone) {
         this.phone = phone;
     }
@@ -101,14 +93,6 @@ public class Member extends Model {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public double getMostRecentWeight() {
-        return mostRecentWeight;
     }
 
     public void setMostRecentWeight(double mostRecentWeight) {

@@ -168,8 +168,22 @@ public class GymUtility {
         return BMI;
     }
 
-    public static String determineBMICategory() {
+    public static String determineMemberBMICategory() {
         Member member = Accounts.getLoggedInMember();
+        Measurement measurement;
+        if (member.measurementlist.size() > 0) {
+            measurement = member.measurementlist.get(0);
+        } else {
+            measurement = null;
+        }
+        double BMI = GymUtility.calculateBMI(member, measurement);
+        String BMICategory = GymUtility.determineBMICategory(BMI);
+        Logger.info("Getting BMI Category");
+        return BMICategory;
+    }
+
+    public static String determineMemberBMICategory(Long id) {
+        Member member = Member.findById(id);
         Measurement measurement;
         if (member.measurementlist.size() > 0) {
             measurement = member.measurementlist.get(0);
@@ -218,5 +232,7 @@ public class GymUtility {
         double average = GymUtility.averageBmi(memberList);
         return average;
     }
+
+
 
 }

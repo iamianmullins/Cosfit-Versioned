@@ -15,7 +15,7 @@ public class Dashboard extends Controller {
         List<Measurement> measurementlist = member.measurementlist;
         Collections.reverse(measurementlist);
         double getBMI = GymUtility.getBMI();
-        String BMICategory = GymUtility.determineBMICategory();
+        String BMICategory = GymUtility.determineMemberBMICategory();
         String idealBW = GymUtility.isIdealBodyWeight();
         render("dashboard.html", member, measurementlist, getBMI, BMICategory, idealBW);
     }

@@ -35,7 +35,7 @@ public class TrainerDash extends Controller {
     public static void viewMember(Long id) {
         Logger.info("Rendering View Member");
         Member member = Member.findById(id);
-        String BMICategory = GymUtility.determineBMICategory(id);
+        String BMICategory = GymUtility.determineMemberBMICategory(id);
         String idealBW = isIdealBodyWeight(id);
         double getBMI = getBMI(id);
         List<Measurement> measurementlist = member.measurementlist;

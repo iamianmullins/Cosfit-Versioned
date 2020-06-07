@@ -62,6 +62,7 @@
             <thead>
             <tr>
                 <th>Member Name</th>
+                <th>Number of assessments</th>
                 <th>ID/Email</th>
                 <th>View Member</th>
                 <th>Delete Member</th>
@@ -71,8 +72,9 @@
 
             #{list items:memberList, as:'member'}
             <tr>
-                <td>${member.firstname + " " + member.lastname}   </td>
-                <td>${member.email}   </td>
+                <td><i class="orange user icon"></i> ${member.firstname + " " + member.lastname}   </td>
+                <td> ${member.measurementlist.size()}</td>
+                <td><i class="orange envelope open outline icon"></i> ${member.email}   </td>
                 <td>
                     <button class="ui vertical animated fluid blue button" tabindex="0">
                         <a href="/viewmember/${member.id}${} ">
