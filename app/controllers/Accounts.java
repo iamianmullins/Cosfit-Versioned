@@ -14,10 +14,12 @@ import java.util.Date;
 
 public class Accounts extends Controller {
     public static void signup() {
+        session.clear();
         render("signup.html");
     }
 
     public static void login() {
+        session.clear();
         render("login.html");
     }
 

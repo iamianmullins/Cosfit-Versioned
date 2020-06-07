@@ -9,19 +9,16 @@ import java.util.List;
 
 public class Admin extends Controller {
     public static void index() {
+        Trainer trainer = Accounts.getLoggedInTrainer();
         Logger.info("Rendering Admin");
-        Member member = Accounts.getLoggedInMember();
-        if (member == null) {
-            List<Member> memberList = Member.findAll();
-            List<Trainer> trainerList = Trainer.findAll();
-            int memberCount = GymUtility.numberOfMembers();
-            int trainerCount = GymUtility.numberOfTrainers();
+        List<Member> memberList = Member.findAll();
+        List<Trainer> trainerList = Trainer.findAll();
+        int memberCount = GymUtility.numberOfMembers();
+        int trainerCount = GymUtility.numberOfTrainers();
+        if(trainer!=null) {
             render("admin.html", memberList, trainerList, memberCount, trainerCount);
         }
-        else {
-            Logger.info("Access to admin denied: ");
-            Dashboard.index();
-        }
+        render("admin.html");
     }
 
     public static void deleteMember(Long id) {
